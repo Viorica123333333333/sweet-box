@@ -18,8 +18,17 @@ const PORT = process.env.PORT || 3000;
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
+  "https://sweet-box-backend.onrender.com",
   process.env.FRONTEND_URL,
 ].filter(Boolean);
+
+const isAllowedOrigin = (origin) => {
+  return (
+    !origin ||
+    allowedOrigins.includes(origin) ||
+    origin.endsWith(".netlify.app")
+  );
+};
 
 /* --- Security middleware --- */
 app.use(helmet());
@@ -27,13 +36,14 @@ app.use(helmet());
 app.use(
   cors({
     origin(origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (isAllowedOrigin(origin)) {
         callback(null, true);
       } else {
         callback(new Error("CORS policy blocked this request."));
       }
     },
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
   }),
 );
 
