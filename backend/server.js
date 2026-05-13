@@ -16,17 +16,19 @@ const PORT = process.env.PORT || 3000;
 
 /* --- Allowed frontend origins for local and deployed use --- */
 const allowedOrigins = [
-  "http://localhost:5173",
-  "http://localhost:5174",
   "https://sweet-box-backend.onrender.com",
   process.env.FRONTEND_URL,
 ].filter(Boolean);
 
 const isAllowedOrigin = (origin) => {
+  if (!origin) return true;
+
   return (
-    !origin ||
+    origin.startsWith("http://localhost:") ||
+    origin.startsWith("http://127.0.0.1:") ||
     allowedOrigins.includes(origin) ||
-    origin.endsWith(".netlify.app")
+    origin.endsWith(".netlify.app") ||
+    origin.endsWith(".vercel.app")
   );
 };
 
@@ -61,7 +63,7 @@ const orderLimiter = rateLimit({
 /* --- MySQL connection pool configuration --- */
 const db = mysql.createPool({
   host: process.env.DB_HOST,
-  port: Number(process.env.DB_PORT),
+  port: Number(process.env.DB_PORT) || 3306,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
@@ -82,6 +84,7 @@ const isValidDate = (date) => /^\d{4}-\d{2}-\d{2}$/.test(date);
 /* --- Time validation: requires HH:MM format --- */
 const isValidTime = (time) => /^([01]\d|2[0-3]):[0-5]\d$/.test(time);
 
+/* --- Validates incoming order data before database insertion --- */
 const validateOrderData = (orderData) => {
   const {
     name,
@@ -141,7 +144,7 @@ const validateOrderData = (orderData) => {
   }
 
   return null;
-}; /* --- Validates incoming order data before database insertion --- */
+};
 
 /* --- Health check route used to confirm that the backend is running --- */
 app.get("/", (req, res) => {
@@ -158,9 +161,11 @@ app.post("/api/orders", orderLimiter, async (req, res) => {
     });
   }
 
-  const connection = await db.getConnection();
+  let connection;
 
   try {
+    connection = await db.getConnection();
+
     const {
       name,
       email,
@@ -182,7 +187,6 @@ app.post("/api/orders", orderLimiter, async (req, res) => {
 
     await connection.beginTransaction();
 
-    /* --- Insert main order details --- */
     const [orderResult] = await connection.execute(
       `INSERT INTO orders (
         customer_name,
@@ -221,7 +225,6 @@ app.post("/api/orders", orderLimiter, async (req, res) => {
 
     const orderId = orderResult.insertId;
 
-    /* --- Insert selected macaron boxes and their grouped flavour items --- */
     for (const box of savedBoxes) {
       const [boxResult] = await connection.execute(
         `INSERT INTO order_boxes (
@@ -248,7 +251,6 @@ app.post("/api/orders", orderLimiter, async (req, res) => {
       }
     }
 
-    /* --- Insert custom flavour mixes selected by the customer --- */
     for (const mix of customMixes) {
       await connection.execute(
         `INSERT INTO order_custom_mixes (
@@ -265,20 +267,24 @@ app.post("/api/orders", orderLimiter, async (req, res) => {
 
     await connection.commit();
 
-    res.status(201).json({
+    return res.status(201).json({
       message: "Order saved successfully",
       orderId,
     });
   } catch (error) {
-    await connection.rollback();
+    if (connection) {
+      await connection.rollback();
+    }
 
     console.error("Order save error:", error);
 
-    res.status(500).json({
+    return res.status(500).json({
       message: "Failed to save order. Please try again later.",
     });
   } finally {
-    connection.release();
+    if (connection) {
+      connection.release();
+    }
   }
 });
 
