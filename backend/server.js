@@ -82,7 +82,6 @@ const isValidDate = (date) => /^\d{4}-\d{2}-\d{2}$/.test(date);
 /* --- Time validation: requires HH:MM format --- */
 const isValidTime = (time) => /^([01]\d|2[0-3]):[0-5]\d$/.test(time);
 
-/* --- Validates incoming order data before database insertion --- */
 const validateOrderData = (orderData) => {
   const {
     name,
@@ -114,13 +113,12 @@ const validateOrderData = (orderData) => {
   }
 
   if (!["standard", "collection"].includes(delivery)) {
-  return "Invalid delivery option.";
-}
+    return "Invalid delivery option.";
   }
 
   if (!["card", "cash"].includes(payment)) {
-  return "Invalid payment option.";
-}
+    return "Invalid payment option.";
+  }
 
   if (preorderDate && !isValidDate(preorderDate)) {
     return "Invalid preorder date format.";
@@ -143,7 +141,7 @@ const validateOrderData = (orderData) => {
   }
 
   return null;
-};
+}; /* --- Validates incoming order data before database insertion --- */
 
 /* --- Health check route used to confirm that the backend is running --- */
 app.get("/", (req, res) => {
