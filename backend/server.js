@@ -73,6 +73,15 @@ const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
 /* --- Basic phone validation pattern --- */
 const isValidPhone = (phone) => /^[0-9+\s]{7,14}$/.test(phone);
 
+/* --- Full name validation: allows letters, spaces, apostrophes, and hyphens --- */
+const isValidName = (name) => /^[A-Za-zÀ-ÿ\s'-]{2,60}$/.test(name.trim());
+
+/* --- Date validation: requires YYYY-MM-DD format --- */
+const isValidDate = (date) => /^\d{4}-\d{2}-\d{2}$/.test(date);
+
+/* --- Time validation: requires HH:MM format --- */
+const isValidTime = (time) => /^([01]\d|2[0-3]):[0-5]\d$/.test(time);
+
 /* --- Validates incoming order data before database insertion --- */
 const validateOrderData = (orderData) => {
   const {
@@ -81,6 +90,8 @@ const validateOrderData = (orderData) => {
     phone,
     delivery,
     payment,
+    preorderDate,
+    preorderTime,
     savedBoxes = [],
     customMixes = [],
     total,
@@ -90,12 +101,32 @@ const validateOrderData = (orderData) => {
     return "Missing required customer, delivery, or payment details.";
   }
 
+  if (!isValidName(name)) {
+    return "Invalid full name format.";
+  }
+
   if (!isValidEmail(email)) {
     return "Invalid email address format.";
   }
 
   if (!isValidPhone(phone)) {
     return "Invalid phone number format.";
+  }
+
+  if (!["delivery", "collection"].includes(delivery)) {
+    return "Invalid delivery option.";
+  }
+
+  if (!["card", "cash"].includes(payment)) {
+    return "Invalid payment option.";
+  }
+
+  if (preorderDate && !isValidDate(preorderDate)) {
+    return "Invalid preorder date format.";
+  }
+
+  if (preorderTime && !isValidTime(preorderTime)) {
+    return "Invalid preorder time format.";
   }
 
   if (!Array.isArray(savedBoxes) || !Array.isArray(customMixes)) {

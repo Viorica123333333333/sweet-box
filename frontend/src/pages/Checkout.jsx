@@ -79,7 +79,7 @@ function Checkout({
   const deliveryCost =
     deliveryMethod === "standard" &&
     (savedBoxes.length > 0 || customMixes.length > 0)
-      ? 3
+      ? 100
       : 0;
 
   const total = boxesSubtotal + mixesSubtotal + deliveryCost;
@@ -118,15 +118,15 @@ function Checkout({
       name: form.fullName.value,
       email: form.email.value,
       phone: form.phone.value,
-      delivery:
-        deliveryMethod === "standard" ? "Standard Delivery" : "Click & Collect",
+
+      delivery: deliveryMethod,
 
       /* --- Safe delivery values: no real address is collected --- */
       city: deliveryMethod === "standard" ? "City" : "",
       postcode: deliveryMethod === "standard" ? "System prototype" : "",
       address: deliveryMethod === "standard" ? "Address " : "",
 
-      payment: paymentMethod === "card" ? "Card Payment" : "Cash",
+      payment: paymentMethod,
       preorderDate,
       preorderTime,
       savedBoxes,
@@ -403,7 +403,10 @@ function Checkout({
               </p>
 
               <p>
-                <strong>Delivery Method:</strong> {orderData.delivery}
+                <strong>Delivery Method:</strong>{" "}
+                {orderData.delivery === "standard"
+                  ? "Standard Delivery"
+                  : "Click & Collect"}
               </p>
 
               {orderData.preorderDate && orderData.preorderTime && (
@@ -418,14 +421,17 @@ function Checkout({
                 </>
               )}
 
-              {orderData.delivery === "Standard Delivery" && (
+              {orderData.delivery === "standard" && (
                 <p>
                   <strong>Address:</strong> Not necessary for system prototype.
                 </p>
               )}
 
               <p>
-                <strong>Payment:</strong> {orderData.payment}
+                <strong>Payment:</strong>{" "}
+                {orderData.payment === "card"
+                  ? "Card Payment"
+                  : "Cash on Collection"}
               </p>
 
               <h3>Your Order</h3>
