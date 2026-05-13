@@ -60,7 +60,7 @@ function Checkout({
 
   /* --- Input helper used to keep name fields alphabetic --- */
   const onlyLetters = (event) => {
-    event.target.value = event.target.value.replace(/[^a-zA-Z\s]/g, "");
+    event.target.value = event.target.value.replace(/[^a-zA-ZÀ-ÿ\s'-]/g, "");
   };
 
   /* --- Input helper used to keep phone fields numeric with + and spaces --- */
@@ -79,7 +79,7 @@ function Checkout({
   const deliveryCost =
     deliveryMethod === "standard" &&
     (savedBoxes.length > 0 || customMixes.length > 0)
-      ? 100
+      ? 3
       : 0;
 
   const total = boxesSubtotal + mixesSubtotal + deliveryCost;
@@ -92,6 +92,15 @@ function Checkout({
   /* --- Removes a custom flavour mix from checkout --- */
   const removeMix = (indexToRemove) => {
     setCustomMixes(customMixes.filter((_, index) => index !== indexToRemove));
+  };
+
+  /* --- Converts internal system values into user-friendly labels --- */
+  const getDeliveryLabel = (value) => {
+    return value === "standard" ? "Standard Delivery" : "Click & Collect";
+  };
+
+  const getPaymentLabel = (value) => {
+    return value === "card" ? "Card Payment" : "Cash on Collection";
   };
 
   /* --- Sends the order to the backend API and displays confirmation result --- */
@@ -115,18 +124,19 @@ function Checkout({
     const form = event.currentTarget;
 
     const data = {
-      name: form.fullName.value,
-      email: form.email.value,
-      phone: form.phone.value,
+      name: form.fullName.value.trim(),
+      email: form.email.value.trim(),
+      phone: form.phone.value.trim(),
 
+      /* --- Controlled internal values sent to backend validation --- */
       delivery: deliveryMethod,
-
-      /* --- Safe delivery values: no real address is collected --- */
-      city: deliveryMethod === "standard" ? "City" : "",
-      postcode: deliveryMethod === "standard" ? "System prototype" : "",
-      address: deliveryMethod === "standard" ? "Address " : "",
-
       payment: paymentMethod,
+
+      /* --- Safe prototype values: no real address is collected --- */
+      city: deliveryMethod === "standard" ? "System prototype" : "",
+      postcode: deliveryMethod === "standard" ? "System prototype" : "",
+      address: deliveryMethod === "standard" ? "System prototype" : "",
+
       preorderDate,
       preorderTime,
       savedBoxes,
@@ -251,7 +261,8 @@ function Checkout({
               {deliveryMethod === "standard" && (
                 <div className="delivery-details">
                   <p className="small-note">
-                    Address line are only as an interface design example.{" "}
+                    Address fields are shown only as an interface design
+                    example. No real address data is collected or stored.
                   </p>
 
                   <div className="form-row">
@@ -300,10 +311,10 @@ function Checkout({
                     onChange={(event) => setPreorderTime(event.target.value)}
                   >
                     <option value="">Select time</option>
-                    <option value="09:00 - 11:00">09:00 - 11:00</option>
-                    <option value="11:00 - 13:00">11:00 - 13:00</option>
-                    <option value="13:00 - 15:00">13:00 - 15:00</option>
-                    <option value="15:00 - 17:00">15:00 - 17:00</option>
+                    <option value="09:00">09:00 - 11:00</option>
+                    <option value="11:00">11:00 - 13:00</option>
+                    <option value="13:00">13:00 - 15:00</option>
+                    <option value="15:00">15:00 - 17:00</option>
                   </select>
                 </div>
               </div>
@@ -404,9 +415,7 @@ function Checkout({
 
               <p>
                 <strong>Delivery Method:</strong>{" "}
-                {orderData.delivery === "standard"
-                  ? "Standard Delivery"
-                  : "Click & Collect"}
+                {getDeliveryLabel(orderData.delivery)}
               </p>
 
               {orderData.preorderDate && orderData.preorderTime && (
@@ -423,15 +432,12 @@ function Checkout({
 
               {orderData.delivery === "standard" && (
                 <p>
-                  <strong>Address:</strong> Not necessary for system prototype.
+                  <strong>Address:</strong> Not collected for system prototype.
                 </p>
               )}
 
               <p>
-                <strong>Payment:</strong>{" "}
-                {orderData.payment === "card"
-                  ? "Card Payment"
-                  : "Cash on Collection"}
+                <strong>Payment:</strong> {getPaymentLabel(orderData.payment)}
               </p>
 
               <h3>Your Order</h3>
@@ -453,8 +459,8 @@ function Checkout({
 
               {orderData.customMixes.map((mix, index) => (
                 <p key={index}>
-                  Custom Mix: {mix.name} x{mix.quantity + "\u00A0"}— MDL
-                  {mix.price * mix.quantity}
+                  Custom Mix: {mix.name} x{mix.quantity} —{" "}
+                  {mix.price * mix.quantity + "\u00A0MDL"}
                 </p>
               ))}
 
@@ -486,6 +492,7 @@ function Checkout({
                       <h3>Box of {box.boxSize}</h3>
 
                       <button
+                        type="button"
                         className="remove-item-btn"
                         onClick={() => removeBox(box.id)}
                       >
@@ -512,7 +519,7 @@ function Checkout({
 
                     <div className="summary-item">
                       <span>Box Total</span>
-                      <span>{box.price + "MDL"}</span>
+                      <span>{box.price + "\u00A0MDL"}</span>
                     </div>
                   </div>
                 ))}
@@ -523,6 +530,7 @@ function Checkout({
                       <h3>Custom Mix</h3>
 
                       <button
+                        type="button"
                         className="remove-item-btn"
                         onClick={() => removeMix(index)}
                       >
@@ -561,7 +569,7 @@ function Checkout({
             {deliveryMethod === "standard" && (
               <div className="summary-item">
                 <span>Delivery</span>
-                <span>MDL{deliveryCost + "\u00A0MDL"}</span>
+                <span>{deliveryCost + "\u00A0MDL"}</span>
               </div>
             )}
 

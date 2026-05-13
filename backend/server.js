@@ -113,13 +113,14 @@ const validateOrderData = (orderData) => {
     return "Invalid phone number format.";
   }
 
-  if (!["delivery", "collection"].includes(delivery)) {
-    return "Invalid delivery option.";
+  if (!["standard", "collection"].includes(delivery)) {
+  return "Invalid delivery option.";
+}
   }
 
   if (!["card", "cash"].includes(payment)) {
-    return "Invalid payment option.";
-  }
+  return "Invalid payment option.";
+}
 
   if (preorderDate && !isValidDate(preorderDate)) {
     return "Invalid preorder date format.";
