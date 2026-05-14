@@ -79,7 +79,7 @@ function Checkout({
   const deliveryCost =
     deliveryMethod === "standard" &&
     (savedBoxes.length > 0 || customMixes.length > 0)
-      ? 3
+      ? 30
       : 0;
 
   const total = boxesSubtotal + mixesSubtotal + deliveryCost;
