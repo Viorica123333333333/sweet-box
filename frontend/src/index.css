@@ -293,7 +293,7 @@ select:disabled {
 .featured-card {
   padding: 10px 10px 14px;
   border-radius: 18px;
-  background: rgb(228, 238, 218);
+  background: rgb(241, 248, 236);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(212, 180, 131, 0.25);
@@ -336,7 +336,7 @@ select:disabled {
   align-items: center;
   padding: 42px;
   border-radius: 34px;
-  background: rgb(230, 239, 221);
+  background: rgb(241, 248, 236);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(212, 180, 131, 0.42);
