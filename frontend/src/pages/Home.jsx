@@ -11,7 +11,7 @@ import strawberryImg from "../assets/images/strawberry.jpg";
 import caramelVanillaImg from "../assets/images/caramelvanilla.jpg";
 import blueberryImg from "../assets/images/bluberry.jpg";
 
-/* --- Homepage layout based  --- */
+/* --- Refined homepage layout based on final visual structure --- */
 function Home() {
   const navigate = useNavigate();
 
@@ -49,9 +49,7 @@ function Home() {
             <h2>Our Products</h2>
           </div>
 
-          <p className="preorder-note">
-            Pre-order available for future dates
-          </p>
+          <p className="preorder-note">Pre-order available for future dates</p>
         </div>
 
         <div className="featured-grid">
@@ -74,10 +72,7 @@ function Home() {
           </article>
 
           <article className="featured-card informational-card">
-            <img
-              src={caramelVanillaImg}
-              alt="Caramel vanilla macarons"
-            />
+            <img src={caramelVanillaImg} alt="Caramel vanilla macarons" />
 
             <div className="card-content">
               <h3>Vanilla Caramel</h3>
@@ -149,14 +144,13 @@ function Home() {
 
           <p>
             Sweet Box was designed as an interactive macaron customisation
-            prototype focused on customer experience, visual simplicity,
-            and guided ordering.
+            prototype focused on customer experience, visual simplicity, and
+            guided ordering.
           </p>
 
           <p>
-            The system supports flavour personalisation, custom box
-            creation, pre-order scheduling, and a structured checkout
-            workflow.
+            The system supports flavour personalisation, custom box creation,
+            pre-order scheduling, and a structured checkout workflow.
           </p>
 
           <button type="button" onClick={() => navigate("/about")}>
