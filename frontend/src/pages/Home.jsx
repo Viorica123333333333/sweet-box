@@ -1,28 +1,24 @@
 import { useNavigate } from "react-router-dom";
 
-import bg from "../assets/images/background.jpg";
 import chooseImg from "../assets/images/chose.jpg";
 import mixImg from "../assets/images/mixflovers.jpg";
-import strawberryImg from "../assets/images/strawberry.jpg";
+import peanutImg from "../assets/images/peanut.jpg";
 import pistachioImg from "../assets/images/pistachio.jpg";
-import chocolateImg from "../assets/images/chocolate.jpg";
+import mintplombirImg from "../assets/images/mintplombir.jpg";
+import kiwiImg from "../assets/images/kiwi.jpg";
+import almondImg from "../assets/images/almond.jpg";
 
 /* --- Home page organised according to the planned wireframe layout --- */
 function Home() {
   const navigate = useNavigate();
 
   return (
-    <main
-      className="home-page full-bg"
-      style={{ backgroundImage: `url(${bg})` }}
-    >
+    <main className="home-page">
       <div className="home-overlay"></div>
 
       <section className="home-hero-section">
         <div className="hero-content">
-          <p className="hero-eyebrow">Handcrafted macarons • Custom boxes</p>
-
-          <h1>Build Your Sweet Box</h1>
+          <h1 className="hero-title">Build Your Sweet Box</h1>
 
           <p className="hero-description">
             Create your perfect macaron experience with personalised boxes,
@@ -42,25 +38,30 @@ function Home() {
       </section>
 
       <section className="featured-section">
-        <h2>Featured Macarons</h2>
+        <h2>New Flavours</h2>
 
         <div className="featured-grid">
           <article className="featured-card">
-            <img src={strawberryImg} alt="Strawberry macarons" />
-            <h3>Box of 6</h3>
-            <p>120 MDL</p>
+            <img src={peanutImg} alt="Peanut macarons" />
+            <h3>Peanut</h3>
           </article>
 
           <article className="featured-card">
             <img src={pistachioImg} alt="Pistachio macarons" />
-            <h3>Box of 12</h3>
-            <p>220 MDL</p>
+            <h3>Pistachio</h3>
           </article>
 
           <article className="featured-card">
-            <img src={chocolateImg} alt="Chocolate macarons" />
-            <h3>Box of 24</h3>
-            <p>400 MDL</p>
+            <img src={mintplombirImg} alt="Mintplombir macarons" />
+            <h3>Mintplombir</h3>
+          </article>
+          <article className="featured-card">
+            <img src={almondImg} alt="Almond macarons" />
+            <h3>Mintplombir</h3>
+          </article>
+          <article className="featured-card">
+            <img src={kiwiImg} alt="Kiwi macarons" />
+            <h3>Mintplombir</h3>
           </article>
         </div>
       </section>

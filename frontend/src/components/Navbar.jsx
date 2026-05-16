@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import logoImg from "../assets/images/logo.jpg";
 
 /* --- Main navigation links used across the website --- */
 const navigationLinks = [
@@ -17,7 +18,8 @@ function Navbar({ basketCount }) {
     <nav className="navbar">
       {/* --- Website home link / brand area --- */}
       <NavLink to="/" className="logo-link">
-        Home
+        <img src={logoImg} alt="Sweet Box logo" className="navbar-logo" />
+        <span>Sweet Box • Home</span>
       </NavLink>
 
       {/* --- Main page navigation --- */}
