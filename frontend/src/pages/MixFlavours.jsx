@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import mixImg from "../assets/images/mixflovers.jpg";
+import mixImg from "../assets/images/mixflavours.jpg";
 
 /* --- Available flavours used for custom macaron mix selection --- */
 const flavourOptions = [

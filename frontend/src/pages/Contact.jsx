@@ -1,11 +1,9 @@
 import contactImg from "../assets/images/contact.jpg";
 
-/* --- Restricts input to letters and spaces only (used for name field) --- */
 const allowLettersOnly = (event) => {
-  event.target.value = event.target.value.replace(/[^a-zA-Z\s]/g, "");
+  event.target.value = event.target.value.replace(/[^a-zA-ZÀ-ÿ\s'-]/g, "");
 };
 
-/* --- Static contact information displayed on the page --- */
 const contactDetails = {
   email: "hello@sweetbox.com",
   phone: "+44 1234 567890",
@@ -15,20 +13,17 @@ const contactDetails = {
 
 function Contact() {
   return (
-    <div className="contact-page">
-      <div className="contact-container">
-        {/* --- Contact information and form section --- */}
-        <div className="contact-info-card">
-          <h1>Contact Us</h1>
+    <main className="contact-page redesigned-contact-page">
+      <section className="contact-hero-layout">
+        <div className="contact-content-card">
+          <h1>Contact Sweet Box</h1>
 
-          <p>
-            Your questions matter. Use this section to contact us about your
-            macaron box, flavour choices, or a future order, and receive a clear
-            and prompt response.
+          <p className="contact-intro">
+            Contact us about macaron boxes, flavour combinations, pre-order
+            details, or general Sweet Box enquiries.
           </p>
 
-          {/* --- Business contact details --- */}
-          <div className="contact-details">
+          <div className="contact-details-list">
             <p>
               <strong>Email:</strong> {contactDetails.email}
             </p>
@@ -42,8 +37,7 @@ function Contact() {
             </p>
           </div>
 
-          {/* --- Contact form (frontend only) --- */}
-          <form className="contact-form">
+          <form className="contact-form redesigned-contact-form">
             <input
               type="text"
               placeholder="Your Name"
@@ -55,20 +49,18 @@ function Contact() {
 
             <textarea placeholder="Your Message" rows="5" required></textarea>
 
-            <button type="submit">Send Message</button>
+            <button type="submit">Send Message →</button>
           </form>
         </div>
 
-        {/* --- Visual support image --- */}
-        <div className="contact-image-wrap">
+        <div className="contact-visual-card">
           <img
             src={contactImg}
-            alt="Sweet Box contact illustration"
-            className="contact-image"
+            alt="Sweet Box contact and macaron presentation"
           />
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
 

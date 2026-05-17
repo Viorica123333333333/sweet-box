@@ -1,95 +1,160 @@
 import { useNavigate } from "react-router-dom";
 
+import heroBg from "../assets/images/background.jpg";
 import chooseImg from "../assets/images/chose.jpg";
 import mixImg from "../assets/images/mixflovers.jpg";
-import peanutImg from "../assets/images/peanut.jpg";
-import pistachioImg from "../assets/images/pistachio.jpg";
-import mintplombirImg from "../assets/images/mintplombir.jpg";
-import kiwiImg from "../assets/images/kiwi.jpg";
-import almondImg from "../assets/images/almond.jpg";
+import aboutImg from "../assets/images/about.jpg";
 
-/* --- Home page organised according to the planned wireframe layout --- */
+import kiwiImg from "../assets/images/kiwi.jpg";
+import strawberryImg from "../assets/images/strawberry.jpg";
+import chocolatefarmImg from "../assets/images/chocolatefarm.jpg";
+import lemonImg from "../assets/images/lemon.jpg";
+
+/* --- Homepage designed as a premium bakery landing page --- */
 function Home() {
   const navigate = useNavigate();
 
+  const products = [
+    { name: "Kiwi", price: "35 MDL", image: kiwiImg },
+    { name: "Strawberry", price: "35 MDL", image: strawberryImg },
+    { name: "Chocolate Farm", price: "35 MDL", image: chocolatefarmImg },
+    { name: "Lemon", price: "35 MDL", image: lemonImg },
+  ];
+
   return (
-    <main className="home-page">
-      <div className="home-overlay"></div>
+    <main className="premium-home">
+      {/* --- Hero section --- */}
+      <section
+        className="premium-hero"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      >
+        <div className="premium-hero-content">
+          <h1>Build Your Sweet Box</h1>
 
-      <section className="home-hero-section">
-        <div className="hero-content">
-          <h1 className="hero-title">Build Your Sweet Box</h1>
-
-          <p className="hero-description">
-            Create your perfect macaron experience with personalised boxes,
-            custom flavour mixes, and pre-order options.
+          <p>
+            Create personalised macaron collections with elegant flavours and
+            premium packaging.
           </p>
 
-          <div className="hero-actions">
+          <div className="premium-hero-actions">
             <button type="button" onClick={() => navigate("/choose")}>
-              Start Customising
+              Start Customising →
             </button>
 
             <button type="button" onClick={() => navigate("/mix")}>
-              Mix Flavours
+              Explore Flavours
             </button>
           </div>
         </div>
       </section>
 
-      <section className="featured-section">
-        <h2>New Flavours</h2>
+      {/* --- Featured products section --- */}
+      <section className="premium-products-section">
+        <div className="premium-section-header">
+          <h2>Featured Macarons</h2>
 
-        <div className="featured-grid">
-          <article className="featured-card">
-            <img src={peanutImg} alt="Peanut macarons" />
-            <h3>Peanut</h3>
-          </article>
+          <span>Pre-order available ♡</span>
+        </div>
 
-          <article className="featured-card">
-            <img src={pistachioImg} alt="Pistachio macarons" />
-            <h3>Pistachio</h3>
-          </article>
+        <div className="premium-products-grid">
+          {products.map((product) => (
+            <article key={product.name} className="premium-product-card">
+              <img src={product.image} alt={`${product.name} macarons`} />
 
-          <article className="featured-card">
-            <img src={mintplombirImg} alt="Mintplombir macarons" />
-            <h3>Mintplombir</h3>
-          </article>
-          <article className="featured-card">
-            <img src={almondImg} alt="Almond macarons" />
-            <h3>Mintplombir</h3>
-          </article>
-          <article className="featured-card">
-            <img src={kiwiImg} alt="Kiwi macarons" />
-            <h3>Mintplombir</h3>
-          </article>
+              <div className="premium-product-info">
+                <div>
+                  <h3>{product.name}</h3>
+                  <p>{product.price}</p>
+                </div>
+
+                <button type="button" onClick={() => navigate("/choose")}>
+                  🛒
+                </button>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section className="home-promotion-section">
-        <div className="promotion-text">
-          <p className="hero-eyebrow">Pre-order available</p>
+      {/* --- Main customisation cards --- */}
+      <section className="premium-action-grid">
+        <article className="premium-action-card premium-choose-card">
+          <div>
+            <h2>Choose Your Box</h2>
 
-          <h2>Plan your macaron box in advance</h2>
+            <p>Select the perfect box size for your sweet moments.</p>
+
+            <div className="premium-size-row">
+              <span>
+                6 pcs
+                <br />
+                120 MDL
+              </span>
+              <span className="active">
+                12 pcs
+                <br />
+                220 MDL
+              </span>
+              <span>
+                18 pcs
+                <br />
+                400 MDL
+              </span>
+            </div>
+          </div>
+
+          <img src={chooseImg} alt="Sweet Box macaron box" />
+        </article>
+
+        <article className="premium-action-card premium-mix-card">
+          <div>
+            <h2>Mix Your Flavours</h2>
+
+            <p>Create your own combination and make it uniquely yours.</p>
+
+            <div className="premium-flavour-strip">
+              <img src={kiwiImg} alt="Kiwi" />
+              <img src={strawberryImg} alt="Strawberry" />
+              <img src={chocolatefarmImg} alt="Chocolate Farm" />
+              <img src={lemonImg} alt="Lemon" />
+              <button type="button" onClick={() => navigate("/mix")}>
+                +
+              </button>
+            </div>
+
+            <button
+              type="button"
+              className="premium-small-btn"
+              onClick={() => navigate("/mix")}
+            >
+              Start Mixing →
+            </button>
+          </div>
+
+          <img src={mixImg} alt="Mix macarons" />
+        </article>
+      </section>
+
+      {/* --- About section --- */}
+      <section className="premium-about-section">
+        <div className="premium-about-text">
+          <h2>About Sweet Box</h2>
+
+          <p>At Sweet Box, every moment deserves a touch of sweetness.</p>
 
           <p>
-            Sweet Box allows customers to choose a standard macaron box, create
-            a custom flavour mix, and schedule an order for a future date during
-            checkout.
+            Our macarons are handcrafted in Chisinau, Moldova using fine
+            ingredients to bring delicate flavours and beautiful experiences.
           </p>
+
+          <p>Perfect for gifts, celebrations, or simply treating yourself.</p>
+
+          <button type="button" onClick={() => navigate("/about")}>
+            Learn More About Us
+          </button>
         </div>
 
-        <div className="promotion-cards">
-          <div className="quick-card" onClick={() => navigate("/choose")}>
-            <img src={chooseImg} alt="Choose a macaron box" />
-            <span>Choose Box</span>
-          </div>
-
-          <div className="quick-card" onClick={() => navigate("/mix")}>
-            <img src={mixImg} alt="Mix macaron flavours" />
-            <span>Mix Flavours</span>
-          </div>
-        </div>
+        <img src={aboutImg} alt="Macarons on plate" />
       </section>
     </main>
   );
