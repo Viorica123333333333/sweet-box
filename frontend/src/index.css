@@ -1285,3 +1285,59 @@ select:disabled {
   justify-self: end !important;
   align-self: center !important;
 }
+/* =========================================================
+   MOBILE RESPONSIVE REFINEMENTS
+   ========================================================= */
+
+@media (max-width: 768px) {
+  /* Hide large decorative sections on mobile */
+  .premium-about-section,
+  .contact-visual-card,
+  .mix-image-wrap,
+  .mix-image,
+  .about-image-wrap,
+  .contact-image-wrap {
+    display: none !important;
+  }
+
+  /* Checkout mobile flow */
+  .checkout-container {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .checkout-summary-card {
+    order: -1 !important;
+    width: 100% !important;
+    margin-bottom: 20px !important;
+  }
+
+  .checkout-form-card {
+    width: 100% !important;
+  }
+
+  /* Better spacing on mobile */
+  .premium-home,
+  .navbar,
+  .footer {
+    width: calc(100% - 20px) !important;
+  }
+
+  .premium-products-section,
+  .premium-action-grid,
+  .contact-hero-layout,
+  .about-hero-layout {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  /* Smaller hero spacing */
+  .premium-hero {
+    padding: 42px 18px !important;
+  }
+
+  .premium-hero-content h1 {
+    font-size: clamp(2rem, 8vw, 3rem) !important;
+    line-height: 1 !important;
+  }
+}
