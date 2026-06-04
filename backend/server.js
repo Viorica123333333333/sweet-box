@@ -15,10 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 /* --- Allowed frontend origins for local and deployed use --- */
-const allowedOrigins = [
-  "https://sweet-box-backend.onrender.com",
-  process.env.FRONTEND_URL,
-].filter(Boolean);
+const allowedOrigins = [process.env.FRONTEND_URL].filter(Boolean);
 
 const isAllowedOrigin = (origin) => {
   if (!origin) return true;
@@ -53,8 +50,9 @@ app.use(express.json({ limit: "1mb" }));
 
 /* --- Rate limiter used to reduce order spam attempts --- */
 const orderLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 20,
+  windowMs: 60 * 1000,
+  limit: 20,
+
   message: {
     message: "Too many order attempts. Please try again later.",
   },

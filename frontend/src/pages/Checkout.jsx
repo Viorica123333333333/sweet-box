@@ -151,7 +151,7 @@ function Checkout({
       setIsSubmitting(true);
 
       const response = await fetch(
-        "https://sweet-box-backend.onrender.com/api/orders",
+        "http://sweet-box-backend.onrender.com/api/orders",
         {
           method: "POST",
           headers: {
