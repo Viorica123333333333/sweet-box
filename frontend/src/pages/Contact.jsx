@@ -1,4 +1,4 @@
-import contactImg from "../assets/images/contact.jpg";
+import contactImg from "../assets/images/contact.jpg"; /* --- Unsplash(2021)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/yellow-round-fruit-on-pink-plastic-container-Nrjt3hAAdNc(Accessed, 2026) --- */
 
 const allowLettersOnly = (event) => {
   event.target.value = event.target.value.replace(/[^a-zA-ZÀ-ÿ\s'-]/g, "");

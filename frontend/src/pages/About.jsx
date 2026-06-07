@@ -1,6 +1,6 @@
-import aboutMain from "../assets/images/about3.jpg";
-import aboutSecondary from "../assets/images/about1.jpg";
-import aboutAccent from "../assets/images/about.jpg";
+import aboutMain from "../assets/images/about3.jpg"; /* --- Unsplash(2024)	Free to use under the Unsplash License, Available at:https://unsplash.com/photos/a-display-case-filled-with-lots-of-different-types-of-donuts-Ck7xmjuxZ2U(Accessed, 2026) --- */
+import aboutSecondary from "../assets/images/about1.jpg"; /* --- Unsplash(2020)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/person-in-yellow-shirt-standing-near-white-plastic-food-container-AdymaD-Kf-Y (Accessed, 2026) --- */
+import aboutAccent from "../assets/images/about.jpg"; /* --- Unsplash(2020)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/tower-of-french-macaroon-VuQ61rPtDS4(Accessed, 2026) --- */
 
 /* --- Structured About page content --- */
 const aboutText = [

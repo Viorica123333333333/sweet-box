@@ -1,20 +1,20 @@
 import { useState } from "react";
 
-import strawberry from "../assets/images/strawberry.jpg";
-import chocolate from "../assets/images/chocolate.jpg";
-import pistachio from "../assets/images/pistachio.jpg";
-import caramelvanilla from "../assets/images/caramelvanilla.jpg";
-import vanilla from "../assets/images/vanila.jpg";
-import blueberry from "../assets/images/bluberry.jpg";
-import almond from "../assets/images/almond.jpg";
-import kiwi from "../assets/images/kiwi.jpg";
-import mango from "../assets/images/mango.jpg";
-import lemon from "../assets/images/lemon.jpg";
-import caramel from "../assets/images/caramel.jpg";
-import coffee from "../assets/images/coffe.jpg";
-import peanut from "../assets/images/peanut.jpg";
-import chocolatefarm from "../assets/images/chocolatefarm.jpg";
-import mintplombir from "../assets/images/mintplombir.jpg";
+import strawberry from "../assets/images/strawberry.jpg"; /* --- Unsplash(2025)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/red-macarons-are-stacked-on-a-white-background-LJp0ft6FOuk (Accessed, 2026) --- */
+import chocolate from "../assets/images/chocolate.jpg"; /* --- Unsplash(2022)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/a-glass-of-milk-and-some-cookies-on-a-table-UXhUQNQMbrg(Accessed, 2026) --- */
+import pistachio from "../assets/images/pistachio.jpg"; /* --- Unsplash(2019)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/milk-in-clear-glass-jar-6eHegE5M_ag (Accessed, 2026) --- */
+import caramelvanilla from "../assets/images/caramelvanilla.jpg"; /* --- Unsplash(2022)	Free to use under the Unsplash License, Available at:https://unsplash.com/photos/a-plate-of-cookies-hF1UugJeyU4(Accessed, 2026) --- */
+import vanilla from "../assets/images/vanila.jpg"; /* --- Unsplash(2020)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/brown-nuts-on-white-textile-WYtK4TffpS8 (Accessed, 2026) --- */
+import blueberry from "../assets/images/bluberry.jpg"; /* --- Unsplash(2021)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/a-piece-of-cake-on-a-plate-3IoXbeD1D-Q(Accessed, 2026) --- */
+import almond from "../assets/images/almond.jpg"; /* --- Unsplash(2019)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/baked-macaroons-7lVp-P_mx9M (Accessed, 2026) --- */
+import kiwi from "../assets/images/kiwi.jpg"; /* --- Unsplash(202)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/heres-a-caption-green-macarons-are-stacked-on-a-white-surface-4FteM5r5ShA(Accessed, 2026) --- */
+import mango from "../assets/images/mango.jpg"; /* --- Unsplash(2020)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/sliced-apple-fruit-on-brown-wooden-table-CYN5jlWPxDE (Accessed, 2026) --- */
+import lemon from "../assets/images/lemon.jpg"; /* --- Unsplash(2022)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/a-plate-of-food-V2l65W-4G14(Accessed, 2026) --- */
+import caramel from "../assets/images/caramel.jpg"; /* --- Unsplash(2023)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/a-couple-of-trays-of-food-sitting-on-top-of-a-table-cPr17b5T9qI(Accessed, 2026) --- */
+import coffee from "../assets/images/coffe.jpg"; /* --- Unsplash(2023)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/a-stack-of-chocolate-macaroons-sitting-on-top-of-a-wooden-table-ROwNQpkbxM0 (Accessed, 2026) --- */
+import peanut from "../assets/images/peanut.jpg"; /* --- Unsplash(2020)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/brown-and-white-round-ornament-h4hezLzzZsM(Accessed, 2026) --- */
+import chocolatefarm from "../assets/images/chocolatefarm.jpg"; /* --- Unsplash(2021)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/burger-with-sliced-tomato-and-green-vegetable-G3UBvnlaudI(Accessed, 2026) --- */
+import mintplombir from "../assets/images/mintplombir.jpg"; /* --- Unsplash(2016)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/person-holding-round-cookie-near-green-leaf-vegetable-VU1Er1yeipk (Accessed, 2026) --- */
 
 /* --- Product image map used in checkout order summary --- */
 const products = {
@@ -151,7 +151,7 @@ function Checkout({
       setIsSubmitting(true);
 
       const response = await fetch(
-        "http://sweet-box-backend.onrender.com/api/orders",
+        "https://sweet-box-backend.onrender.com/api/orders",
         {
           method: "POST",
           headers: {

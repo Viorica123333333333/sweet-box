@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import mixImg from "../assets/images/mixflavours.jpg";
+import mixImg from "../assets/images/mixflavours.jpg"; /* --- Unsplash(2019)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/a-couple-of-macaroons-sitting-on-top-of-a-table-Zx_1lv0UPu0(Accessed, 2026) --- */
 
 /* --- Available flavours used for custom macaron mix selection --- */
 const flavourOptions = [
