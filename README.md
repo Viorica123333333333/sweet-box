@@ -1,73 +1,306 @@
-# React + Vite
+# Sweet Box
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+Sweet Box is a full-stack web application.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The application was designed for a macaron bakery and provides an interactive online ordering experience that allows customers to create personalised macaron boxes, select flavours, choose delivery options and place customised orders through a user-friendly interface.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-
-Live Deployment:
-Frontend: https://sweet-box.netlify.app
-Backend: https://sweet-box-backend.onrender.com
-
-Repository Structure:
-frontend/
-backend/
-
-Frontend:
-React + Vite
-
-Backend:
-Node.js + Express
-
-Database:
-MySQL (Railway)
-
-Deployment:
-Netlify + Render
+Unlike traditional bakery ordering systems that offer limited product personalisation, Sweet Box enables customers to actively participate in product creation by building customised macaron boxes and creating unique flavour combinations.
 
 ---
 
-Requirements
+## Live Deployment
 
-Before running the project, ensure the following software is installed:
+### Frontend
 
-Node.js
-npm
-MySQL
+https://sweet-box.netlify.app/
+
+### Backend API
+
+https://sweet-box-backend.onrender.com
 
 ---
 
-Running the Backend Locally
+## Features
 
-Open a terminal and navigate to the frontend folder:
+### Customer Features
+
+- Browse available macaron flavours
+- Select different box sizes
+- Create customised macaron boxes
+- Build unique flavour combinations
+- Dynamic price calculation
+- Choose delivery or collection
+- Select a payment method
+- Checkout form validation
+- Order confirmation page
+- Responsive design for desktop and mobile devices
+
+### Validation Features
+
+The application implements both frontend and backend validation to improve data quality and security.
+
+Examples include:
+
+- Required field validation
+- Email format validation
+- Empty basket prevention
+- Name field validation
+- Delivery option validation
+- Payment method validation
+- Date and time validation
+
+---
+
+## Technology Stack
+
+### Frontend
+
+- React
+- Vite
+- JavaScript
+- CSS
+
+### Backend
+
+- Node.js
+- Express.js
+
+### Database
+
+- MySQL (Railway)
+
+### Security & Configuration
+
+- Helmet
+- CORS
+- Express Rate Limit
+- dotenv
+
+### Deployment
+
+- Netlify (Frontend)
+- Render (Backend)
+- Railway (Database)
+
+---
+
+## Project Structure
+
+```text
+sweet-box/
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
+├── backend/
+│   ├── routes/
+│   ├── database/
+│   ├── server.js
+│   └── package.json
+│
+└── README.md
+```
+
+---
+
+## Database Structure
+
+The application stores customer orders using a relational MySQL database.
+
+Main tables:
+
+- orders
+- order_boxes
+- order_custom_mixes
+- order_box_items
+
+These tables work together to store customer information, order details, selected box configurations and customised flavour combinations.
+
+---
+
+## Installation
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/Viorica123333333333/sweet-box.git
+```
+
+---
+
+## Frontend Setup
+
+Navigate to the frontend folder:
+
+```bash
 cd frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
 npm run dev
-The frontend will normally be available at:
+```
 
-## http://localhost:5173
+Frontend will be available at:
 
-Running the Backend Locally
+```text
+http://localhost:5173
+```
 
-Open a second terminal and navigate to the backend folder:
+---
+
+## Backend Setup
+
+Open a second terminal.
+
+Navigate to the backend folder:
+
+```bash
 cd backend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
 Start the backend server:
+
+```bash
 npm start
-The backend API will normally run on:
+```
 
-## http://localhost:3000
+Backend will be available at:
 
-GitHub Repository
+```text
+http://localhost:3000
+```
 
-The complete source code can be viewed through the GitHub repository.
+---
 
+## Environment Variables
+
+The backend uses **dotenv** to manage environment variables and protect sensitive configuration data.
+
+Create a `.env` file inside the backend directory:
+
+```env
+DB_HOST=your_database_host
+DB_PORT=your_database_port
+DB_NAME=your_database_name
+DB_USER=your_database_user
+DB_PASSWORD=your_database_password
+```
+
+The application loads these values using:
+
+```javascript
+import dotenv from "dotenv";
+
+dotenv.config();
+```
+
+This approach keeps database credentials separate from the source code and improves security when deploying the application.
+
+**Important:** Never commit real credentials or passwords to a public GitHub repository.
+
+---
+
+## Security Measures
+
+The backend includes several security mechanisms:
+
+### Helmet
+
+Adds HTTP security headers to help protect against common web vulnerabilities.
+
+### CORS
+
+Controls which domains are permitted to communicate with the backend API.
+
+### Rate Limiting
+
+Restricts excessive requests from a single client to reduce abuse and improve application stability.
+
+### Server-Side Validation
+
+All critical order information is validated on the server before being processed and stored in the database.
+
+---
+
+## Limitations
+
+This project was developed as an academic prototype.
+
+The current version:
+
+- Does not process real payments
+- Does not send automated emails
+- Does not include an administrative dashboard
+- Focuses specifically on macaron customisation
+
+---
+
+## Future Improvements
+
+Potential future enhancements include:
+
+- Stripe or PayPal payment integration
+- Automated email notifications
+- Administrative management dashboard
+- Inventory management functionality
+- Order status tracking
+- User accounts and authentication
+- Expanded product catalogue
+
+---
+
+## Academic Context
+
+This project was developed for the **COM6007 Computing Project** module and demonstrates:
+
+- Frontend development using React
+- REST API integration
+- Backend development using Node.js and Express.js
+- Relational database design using MySQL
+- Client-side and server-side validation
+- Deployment of a full-stack web application
+- Application of web security practices
+
+---
+
+## Screenshots
+
+Screenshots of the application can be added here to demonstrate key functionality such as:
+
+- Home Page
+- Choose Box Page
+- Mix Flavours Page
+- Checkout Page
+- Order Confirmation Page
+
+---
+
+## Author
+
+**Viorica Pogor**
+
+Junior / Graduate Front-End Developer
+
+GitHub:
+https://github.com/Viorica123333333333
+
+Project Repository:
 https://github.com/Viorica123333333333/sweet-box

@@ -41,6 +41,7 @@ function Checkout({
   customMixes = [],
   setCustomMixes,
 }) {
+  /* --- React state variables used to manage checkout form data and UI behaviour --- */
   const [paymentMethod, setPaymentMethod] = useState("");
   const [deliveryMethod, setDeliveryMethod] = useState("");
   const [orderPlaced, setOrderPlaced] = useState(false);
@@ -71,6 +72,7 @@ function Checkout({
   /* --- Price calculations used in the order summary --- */
   const boxesSubtotal = savedBoxes.reduce((sum, box) => sum + box.price, 0);
 
+  /* --- Calculates the total value of all custom flavour mixes --- */
   const mixesSubtotal = customMixes.reduce(
     (sum, mix) => sum + mix.price * mix.quantity,
     0,

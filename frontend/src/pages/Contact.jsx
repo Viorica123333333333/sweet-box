@@ -1,12 +1,13 @@
 import contactImg from "../assets/images/contact.jpg"; /* --- Unsplash(2021)	Free to use under the Unsplash License, Available at: https://unsplash.com/photos/yellow-round-fruit-on-pink-plastic-container-Nrjt3hAAdNc(Accessed, 2026) --- */
 
+/* --- Input validation helper allowing only alphabetic characters --- */
 const allowLettersOnly = (event) => {
   event.target.value = event.target.value.replace(/[^a-zA-ZÀ-ÿ\s'-]/g, "");
 };
-
+/* --- Prototype contact information displayed on the contact page --- */
 const contactDetails = {
   email: "hello@sweetbox.com",
-  phone: "+44 1234 567890",
+  phone: "+123456789089",
   address:
     "Sweet Box Bakery, Sweet Street 21, Chisinau, Republic of Moldova, DM-21BX",
 };
@@ -23,6 +24,7 @@ function Contact() {
             details, or general Sweet Box enquiries.
           </p>
 
+          {/* --- Displays bakery contact details --- */}
           <div className="contact-details-list">
             <p>
               <strong>Email:</strong> {contactDetails.email}
@@ -52,7 +54,7 @@ function Contact() {
             <button type="submit">Send Message →</button>
           </form>
         </div>
-
+        {/* --- Decorative product image used to enhance visual presentation --- */}
         <div className="contact-visual-card">
           <img
             src={contactImg}

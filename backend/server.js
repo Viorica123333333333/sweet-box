@@ -184,7 +184,7 @@ app.post("/api/orders", orderLimiter, async (req, res) => {
     } = req.body;
 
     await connection.beginTransaction();
-
+    // Parameterised query used to prevent SQL injection attacks
     const [orderResult] = await connection.execute(
       `INSERT INTO orders (
         customer_name,
