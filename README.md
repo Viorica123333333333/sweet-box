@@ -269,7 +269,7 @@ Potential future enhancements include:
 
 ## Academic Context
 
-This project was developed for the **COM6007 Computing Project** module and demonstrates:
+This project was developed for the **Computing Project** module and demonstrates:
 
 - Frontend development using React
 - REST API integration
@@ -292,12 +292,6 @@ Screenshots of the application can be added here to demonstrate key functionalit
 - Order Confirmation Page
 
 ---
-
-## Author
-
-**Viorica Pogor**
-
-Junior / Graduate Front-End Developer
 
 GitHub:
 https://github.com/Viorica123333333333
