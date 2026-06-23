@@ -197,11 +197,11 @@ The backend uses **dotenv** to manage environment variables and protect sensitiv
 Create a `.env` file inside the backend directory:
 
 ```env
-DB_HOST=your_database_host
-DB_PORT=your_database_port
-DB_NAME=your_database_name
-DB_USER=your_database_user
-DB_PASSWORD=your_database_password
+DB_HOST=*******************
+DB_PORT=*******************
+DB_NAME=*******************
+DB_USER=*******************
+DB_PASSWORD=*******************
 ```
 
 The application loads these values using:
@@ -278,18 +278,6 @@ This project was developed for the **Computing Project** module and demonstrates
 - Client-side and server-side validation
 - Deployment of a full-stack web application
 - Application of web security practices
-
----
-
-## Screenshots
-
-Screenshots of the application can be added here to demonstrate key functionality such as:
-
-- Home Page
-- Choose Box Page
-- Mix Flavours Page
-- Checkout Page
-- Order Confirmation Page
 
 ---
 
