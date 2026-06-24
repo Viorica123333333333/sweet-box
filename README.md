@@ -286,3 +286,11 @@ https://github.com/Viorica123333333333
 
 Project Repository:
 https://github.com/Viorica123333333333/sweet-box
+## Disclaimer
+
+Sweet Box is an educational portfolio project developed for academic learning and demonstration purposes.
+
+The application was created to showcase skills in React, Node.js, Express, MySQL, REST API integration, form validation, and full-stack web development. While the project simulates a real-world custom ordering platform, it is not intended for commercial use and does not process real payments or customer transactions.
+
+All product data, orders, and interactions are for demonstration purposes only.
+
