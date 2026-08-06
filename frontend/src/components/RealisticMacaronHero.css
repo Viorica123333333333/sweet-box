@@ -1,0 +1,265 @@
+.realistic-hero {
+  position: relative;
+  min-height: 720px;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: center;
+  gap: 50px;
+  padding: 70px clamp(30px, 6vw, 90px);
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 72% 42%,
+      rgba(143, 167, 126, 0.25),
+      transparent 32%
+    ),
+    linear-gradient(135deg, #fffaf4, #f2f5eb);
+}
+
+.realistic-hero-copy {
+  position: relative;
+  z-index: 5;
+  max-width: 520px;
+}
+
+.realistic-hero-label {
+  margin: 0 0 18px;
+  color: #8fa77e;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.realistic-hero-copy h1 {
+  margin: 0;
+  color: #253c31;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.3rem, 6vw, 6.4rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+}
+
+.realistic-hero-copy > p:not(.realistic-hero-label) {
+  max-width: 470px;
+  margin: 28px 0 0;
+  color: #40594b;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.realistic-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.realistic-hero-actions button:first-child {
+  background: #355846;
+  border-color: #355846;
+  color: #fffaf4;
+}
+
+.realistic-macaron-stage {
+  position: relative;
+  min-height: 590px;
+  display: grid;
+  place-items: center;
+}
+
+.realistic-glow {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: rgba(143, 167, 126, 0.2);
+  filter: blur(20px);
+}
+
+.realistic-macaron {
+  position: relative;
+  z-index: 3;
+  width: min(540px, 46vw);
+  aspect-ratio: 1 / 1;
+}
+
+.realistic-layer {
+  position: absolute;
+  left: 50%;
+  width: 90%;
+  height: auto;
+  object-fit: contain;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 24px 24px rgba(37, 60, 49, 0.2));
+  transition:
+    transform 1.2s cubic-bezier(0.16, 0.82, 0.25, 1),
+    opacity 0.6s ease;
+}
+
+.realistic-top-shell {
+  top: 21%;
+  z-index: 3;
+  transform: translateX(-50%) translateY(0) rotate(0deg);
+}
+
+.realistic-cream {
+  top: 39%;
+  z-index: 2;
+  width: 82%;
+  transform: translateX(-50%) scaleY(0.85);
+}
+
+.realistic-bottom-shell {
+  top: 51%;
+  z-index: 1;
+  transform: translateX(-50%) translateY(0) rotate(0deg);
+}
+
+.is-open .realistic-top-shell {
+  transform: translateX(-54%) translateY(-105px) rotate(-7deg);
+}
+
+.is-open .realistic-cream {
+  transform: translateX(-50%) scaleY(1.18);
+}
+
+.is-open .realistic-bottom-shell {
+  transform: translateX(-46%) translateY(75px) rotate(3deg);
+}
+
+.realistic-decoration {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.5);
+  transition:
+    opacity 0.8s ease,
+    transform 1.15s cubic-bezier(0.16, 0.82, 0.25, 1);
+}
+
+.realistic-raspberries {
+  width: 170px;
+  right: 1%;
+  top: 24%;
+}
+
+.realistic-petals {
+  width: 210px;
+  left: 0;
+  top: 10%;
+}
+
+.realistic-crumbs {
+  width: 360px;
+  left: 18%;
+  bottom: 5%;
+}
+
+.is-open .realistic-raspberries {
+  opacity: 1;
+  transform: translate(25px, -20px) scale(1);
+}
+
+.is-open .realistic-petals {
+  opacity: 1;
+  transform: translate(-18px, -25px) rotate(-8deg) scale(1);
+}
+
+.is-open .realistic-crumbs {
+  opacity: 1;
+  transform: translateY(30px) scale(1);
+}
+
+.realistic-flavour-label {
+  position: absolute;
+  z-index: 6;
+  right: 0;
+  top: 8%;
+  display: grid;
+  gap: 5px;
+  padding: 18px 22px;
+  border: 1px solid rgba(53, 88, 70, 0.15);
+  border-radius: 22px;
+  background: rgba(255, 250, 244, 0.8);
+  backdrop-filter: blur(12px);
+}
+
+.realistic-flavour-label span {
+  color: #718477;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.realistic-flavour-label strong {
+  color: #355846;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.7rem;
+}
+
+@media (max-width: 950px) {
+  .realistic-hero {
+    grid-template-columns: 1fr;
+    padding: 60px 24px;
+  }
+
+  .realistic-hero-copy {
+    justify-self: center;
+    text-align: center;
+  }
+
+  .realistic-hero-copy > p:not(.realistic-hero-label) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .realistic-hero-actions {
+    justify-content: center;
+  }
+
+  .realistic-macaron {
+    width: min(540px, 82vw);
+  }
+}
+
+@media (max-width: 600px) {
+  .realistic-hero {
+    min-height: auto;
+    padding: 50px 18px 80px;
+  }
+
+  .realistic-macaron-stage {
+    min-height: 430px;
+  }
+
+  .realistic-macaron {
+    width: min(430px, 96vw);
+  }
+
+  .realistic-flavour-label {
+    display: none;
+  }
+
+  .realistic-raspberries {
+    width: 100px;
+  }
+
+  .realistic-petals {
+    width: 120px;
+  }
+
+  .realistic-crumbs {
+    width: 240px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .realistic-layer,
+  .realistic-decoration {
+    transition: none;
+  }
+}

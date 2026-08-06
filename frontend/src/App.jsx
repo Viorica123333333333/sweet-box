@@ -22,59 +22,71 @@ function App() {
 
   return (
     <Gate>
-      <Navbar basketCount={basketCount} />
+      <div
+        className="app-page-stack"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "32px",
+          padding: "14px 0 32px",
+        }}
+      >
+        <Navbar basketCount={basketCount} />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
+        <div className="app-route-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
 
-        <Route
-          path="/choose"
-          element={
-            <ChooseBox
-              box={box}
-              setBox={setBox}
-              boxSize={boxSize}
-              setBoxSize={setBoxSize}
-              savedBoxes={savedBoxes}
-              setSavedBoxes={setSavedBoxes}
+            <Route
+              path="/choose"
+              element={
+                <ChooseBox
+                  box={box}
+                  setBox={setBox}
+                  boxSize={boxSize}
+                  setBoxSize={setBoxSize}
+                  savedBoxes={savedBoxes}
+                  setSavedBoxes={setSavedBoxes}
+                />
+              }
             />
-          }
-        />
 
-        <Route
-          path="/mix"
-          element={
-            <MixFlavours
-              customMixes={customMixes}
-              setCustomMixes={setCustomMixes}
+            <Route
+              path="/mix"
+              element={
+                <MixFlavours
+                  customMixes={customMixes}
+                  setCustomMixes={setCustomMixes}
+                />
+              }
             />
-          }
-        />
 
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
 
-        <Route
-          path="/checkout"
-          element={
-            <Checkout
-              savedBoxes={savedBoxes}
-              setSavedBoxes={setSavedBoxes}
-              customMixes={customMixes}
-              setCustomMixes={setCustomMixes}
+            <Route
+              path="/checkout"
+              element={
+                <Checkout
+                  savedBoxes={savedBoxes}
+                  setSavedBoxes={setSavedBoxes}
+                  customMixes={customMixes}
+                  setCustomMixes={setCustomMixes}
+                />
+              }
             />
-          }
-        />
-      </Routes>
+          </Routes>
+        </div>
 
-      <footer className="footer">
-        © {new Date().getFullYear()} Sweet Box
-        <br />
-        <span>
-          Sweet Box Bakery, Sweet Street 21, Chisinau, Republic of Moldova,
-          DM-21BX
-        </span>
-      </footer>
+        <footer className="footer">
+          © {new Date().getFullYear()} Sweet Box
+          <br />
+          <span>
+            Sweet Box Bakery, Sweet Street 21, Chisinau, Republic of Moldova,
+            DM-21BX
+          </span>
+        </footer>
+      </div>
     </Gate>
   );
 }
