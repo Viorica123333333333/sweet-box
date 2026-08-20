@@ -1,0 +1,847 @@
+/* =========================================================
+   SWEET BOX — CINEMATIC MACARON HERO
+   Add this at the END of your current App.css.
+   ========================================================= */
+
+:root {
+  --rose: #d96d7d;
+  --ink: #2f201c;
+}
+
+.navbar {
+  position: sticky;
+  top: 14px;
+  z-index: 100;
+  width: min(1320px, calc(100% - 48px));
+  margin: 14px auto;
+  border-radius: 999px;
+  background: rgba(255, 250, 244, 0.78);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.navbar-wordmark {
+  display: grid;
+  line-height: 1;
+}
+
+.navbar-wordmark strong {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+}
+
+.navbar-wordmark small {
+  margin-top: 5px;
+  font-size: 0.52rem;
+  letter-spacing: 0.28em;
+}
+
+.checkout-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.basket-count {
+  display: grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--green);
+  color: white;
+  font-size: 0.72rem;
+}
+
+.premium-home {
+  border-radius: 32px 32px 0 0;
+}
+
+.macaron-hero {
+  --pointer-x: 0;
+  --pointer-y: 0;
+  position: relative;
+  isolation: isolate;
+  min-height: min(780px, calc(100vh - 104px));
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(520px, 1.18fr);
+  align-items: center;
+  gap: 24px;
+  padding: 84px clamp(32px, 5vw, 86px) 128px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 72% 42%, var(--hero-glow), transparent 28%),
+    linear-gradient(135deg, #fffaf4 0%, #f8eee8 55%, #fff8f2 100%);
+}
+
+.macaron-hero::before,
+.macaron-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  border-radius: 50%;
+  filter: blur(4px);
+}
+
+.macaron-hero::before {
+  width: 420px;
+  height: 420px;
+  left: -180px;
+  bottom: -220px;
+  background: var(--hero-glow);
+}
+
+.macaron-hero::after {
+  width: 220px;
+  height: 220px;
+  right: -80px;
+  top: -70px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.macaron-hero-noise {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.18;
+  pointer-events: none;
+  background-image:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(78, 48, 40, 0.12) 0 1px,
+      transparent 1.2px
+    ),
+    radial-gradient(
+      circle at 70% 65%,
+      rgba(78, 48, 40, 0.08) 0 1px,
+      transparent 1.2px
+    );
+  background-size:
+    24px 24px,
+    31px 31px;
+  mask-image: linear-gradient(to bottom, #000, transparent 80%);
+}
+
+.macaron-orbit {
+  position: absolute;
+  z-index: -1;
+  border: 1px solid rgba(96, 62, 52, 0.09);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.macaron-orbit-one {
+  width: 620px;
+  height: 620px;
+  right: 6%;
+  top: 4%;
+}
+
+.macaron-orbit-two {
+  width: 460px;
+  height: 460px;
+  right: 12%;
+  top: 14%;
+}
+
+.macaron-hero-copy {
+  position: relative;
+  z-index: 4;
+  max-width: 520px;
+}
+
+.macaron-eyebrow,
+.premium-kicker {
+  margin: 0 0 16px;
+  color: var(--rose);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.macaron-hero-copy h1 {
+  max-width: 620px;
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-heading);
+  font-size: clamp(3.6rem, 7vw, 7.5rem);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 0.88;
+}
+
+.macaron-intro {
+  max-width: 470px;
+  margin: 30px 0 0;
+  color: #5e4942;
+  font-size: clamp(1rem, 1.35vw, 1.15rem);
+  line-height: 1.75;
+}
+
+.macaron-hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 34px;
+}
+
+.macaron-primary-action,
+.macaron-secondary-action {
+  min-width: 176px;
+}
+
+.macaron-primary-action {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fffaf4;
+}
+
+.macaron-secondary-action {
+  color: var(--ink);
+  border-color: rgba(47, 32, 28, 0.26);
+}
+
+.macaron-interaction-note {
+  margin: 20px 0 0;
+  color: #8a7168;
+  font-size: 0.78rem;
+}
+
+.macaron-stage {
+  position: relative;
+  min-height: 560px;
+  display: grid;
+  place-items: center;
+  perspective: 1400px;
+}
+
+.macaron-object-button {
+  position: relative;
+  z-index: 3;
+  width: min(38vw, 520px);
+  aspect-ratio: 1 / 1;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: translate3d(
+      calc(var(--pointer-x) * 12px),
+      calc(var(--pointer-y) * 10px),
+      0
+    )
+    rotateX(calc(var(--pointer-y) * -3deg))
+    rotateY(calc(var(--pointer-x) * 4deg));
+  transition: transform 0.2s ease-out;
+}
+
+.macaron-object-button:hover {
+  background: transparent;
+  border-color: transparent;
+  transform: translate3d(
+      calc(var(--pointer-x) * 14px),
+      calc(var(--pointer-y) * 12px - 3px),
+      0
+    )
+    rotateX(calc(var(--pointer-y) * -4deg))
+    rotateY(calc(var(--pointer-x) * 5deg));
+}
+
+.macaron-object {
+  position: absolute;
+  inset: 0;
+  filter: drop-shadow(0 36px 30px rgba(83, 46, 38, 0.18));
+  transform: scale(0.96);
+  transition:
+    transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.35s ease;
+}
+
+.is-changing .macaron-object {
+  opacity: 0;
+  transform: scale(0.72) rotate(-8deg);
+}
+
+.macaron-shadow {
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  bottom: 4%;
+  height: 13%;
+  border-radius: 50%;
+  background: rgba(91, 52, 44, 0.2);
+  filter: blur(18px);
+  transform: scaleX(0.86);
+}
+
+.macaron-shell {
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  height: 31%;
+  overflow: hidden;
+  border: 0;
+  background:
+    radial-gradient(
+      circle at 28% 18%,
+      rgba(255, 255, 255, 0.42),
+      transparent 13%
+    ),
+    radial-gradient(circle at 70% 70%, rgba(94, 30, 38, 0.14), transparent 30%),
+    linear-gradient(180deg, var(--shell), var(--shell-dark));
+  box-shadow:
+    inset 0 8px 14px rgba(255, 255, 255, 0.22),
+    inset 0 -10px 16px rgba(88, 37, 35, 0.14);
+  transition:
+    transform 1.15s cubic-bezier(0.16, 0.82, 0.25, 1),
+    border-radius 0.8s ease;
+}
+
+.macaron-shell-top {
+  top: 18%;
+  border-radius: 52% 52% 30% 30% / 75% 75% 24% 24%;
+  transform-origin: 50% 100%;
+}
+
+.macaron-shell-bottom {
+  bottom: 17%;
+  border-radius: 30% 30% 52% 52% / 24% 24% 75% 75%;
+  transform-origin: 50% 0%;
+}
+
+.macaron-shell-texture {
+  position: absolute;
+  inset: auto 0 0;
+  height: 25%;
+  opacity: 0.9;
+  background:
+    radial-gradient(
+      circle at 8% 50%,
+      rgba(255, 255, 255, 0.25) 0 2px,
+      transparent 2.5px
+    ),
+    radial-gradient(
+      circle at 27% 60%,
+      rgba(76, 25, 29, 0.18) 0 2px,
+      transparent 2.5px
+    ),
+    radial-gradient(
+      circle at 64% 40%,
+      rgba(255, 255, 255, 0.2) 0 2px,
+      transparent 2.5px
+    ),
+    radial-gradient(
+      circle at 83% 62%,
+      rgba(76, 25, 29, 0.16) 0 2px,
+      transparent 2.5px
+    );
+  background-size:
+    27px 17px,
+    31px 21px,
+    24px 19px,
+    35px 23px;
+}
+
+.macaron-filling {
+  position: absolute;
+  left: 13%;
+  right: 13%;
+  top: 43%;
+  height: 20%;
+  z-index: -1;
+}
+
+.macaron-cream {
+  position: absolute;
+  inset: 8% 0;
+  border-radius: 44% 42% 48% 46%;
+  background:
+    radial-gradient(
+      circle at 35% 25%,
+      rgba(255, 255, 255, 0.92),
+      transparent 21%
+    ),
+    linear-gradient(180deg, #fff, var(--cream));
+  box-shadow:
+    inset 0 -7px 12px rgba(130, 72, 68, 0.09),
+    0 9px 15px rgba(75, 37, 34, 0.12);
+  transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.macaron-jam {
+  position: absolute;
+  z-index: 2;
+  border-radius: 50%;
+  background: var(--jam);
+  box-shadow: inset 0 5px 8px rgba(255, 255, 255, 0.18);
+  transition:
+    transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.5s ease;
+}
+
+.macaron-jam-one {
+  width: 38%;
+  height: 48%;
+  left: 18%;
+  top: 30%;
+  transform: rotate(-4deg);
+}
+
+.macaron-jam-two {
+  width: 29%;
+  height: 42%;
+  right: 15%;
+  top: 18%;
+  transform: rotate(5deg);
+}
+
+.macaron-stretch {
+  position: absolute;
+  z-index: 1;
+  top: 25%;
+  width: 8%;
+  height: 80%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, white, var(--cream));
+  opacity: 0;
+  transform: scaleY(0.2);
+  transform-origin: top;
+  transition: all 1s cubic-bezier(0.15, 0.8, 0.2, 1);
+}
+
+.macaron-stretch-one {
+  left: 37%;
+}
+.macaron-stretch-two {
+  right: 33%;
+}
+
+.macaron-crack {
+  position: absolute;
+  z-index: 3;
+  width: 3px;
+  height: 35%;
+  top: 49%;
+  opacity: 0;
+  background: rgba(73, 24, 31, 0.66);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    45% 32%,
+    100% 48%,
+    35% 70%,
+    75% 100%,
+    0 100%,
+    25% 69%,
+    0 49%,
+    52% 30%
+  );
+  transition: opacity 0.24s ease 0.12s;
+}
+
+.macaron-crack-one {
+  left: 47%;
+  transform: rotate(7deg);
+}
+.macaron-crack-two {
+  left: 57%;
+  transform: rotate(-11deg) scale(0.75);
+}
+
+.is-open .macaron-shell-top {
+  transform: translate3d(-4%, -30%, 70px) rotate(-8deg);
+}
+
+.is-open .macaron-shell-bottom {
+  transform: translate3d(4%, 23%, 28px) rotate(3deg);
+}
+
+.is-open .macaron-cream {
+  transform: scaleY(1.25);
+}
+
+.is-open .macaron-stretch {
+  opacity: 0.94;
+  transform: scaleY(2.2);
+}
+
+.is-open .macaron-crack {
+  opacity: 1;
+}
+
+.macaron-crumb {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 45%;
+  width: 9px;
+  height: 7px;
+  border-radius: 50% 35% 45% 30%;
+  background: var(--shell-dark);
+  opacity: 0;
+  transform: translate(0, 0) scale(0.2);
+}
+
+.is-open .macaron-crumb {
+  animation: macaronCrumbBurst 1.15s cubic-bezier(0.18, 0.72, 0.22, 1) both;
+}
+
+.macaron-crumb-1 {
+  --crumb-x: -185px;
+  --crumb-y: -90px;
+  animation-delay: 0.06s !important;
+}
+.macaron-crumb-2 {
+  --crumb-x: -135px;
+  --crumb-y: -165px;
+  animation-delay: 0.09s !important;
+}
+.macaron-crumb-3 {
+  --crumb-x: -60px;
+  --crumb-y: -185px;
+  animation-delay: 0.12s !important;
+}
+.macaron-crumb-4 {
+  --crumb-x: 70px;
+  --crumb-y: -190px;
+  animation-delay: 0.08s !important;
+}
+.macaron-crumb-5 {
+  --crumb-x: 150px;
+  --crumb-y: -135px;
+  animation-delay: 0.11s !important;
+}
+.macaron-crumb-6 {
+  --crumb-x: 205px;
+  --crumb-y: -55px;
+  animation-delay: 0.14s !important;
+}
+.macaron-crumb-7 {
+  --crumb-x: 190px;
+  --crumb-y: 70px;
+  animation-delay: 0.1s !important;
+}
+.macaron-crumb-8 {
+  --crumb-x: 115px;
+  --crumb-y: 145px;
+  animation-delay: 0.16s !important;
+}
+.macaron-crumb-9 {
+  --crumb-x: 38px;
+  --crumb-y: 180px;
+  animation-delay: 0.13s !important;
+}
+.macaron-crumb-10 {
+  --crumb-x: -75px;
+  --crumb-y: 165px;
+  animation-delay: 0.17s !important;
+}
+.macaron-crumb-11 {
+  --crumb-x: -165px;
+  --crumb-y: 105px;
+  animation-delay: 0.12s !important;
+}
+.macaron-crumb-12 {
+  --crumb-x: -210px;
+  --crumb-y: 24px;
+  animation-delay: 0.15s !important;
+}
+.macaron-crumb-13 {
+  --crumb-x: 125px;
+  --crumb-y: -42px;
+  animation-delay: 0.18s !important;
+}
+.macaron-crumb-14 {
+  --crumb-x: -112px;
+  --crumb-y: 30px;
+  animation-delay: 0.2s !important;
+}
+
+@keyframes macaronCrumbBurst {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0) scale(0.2);
+  }
+  28% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--crumb-x), var(--crumb-y)) rotate(240deg)
+      scale(1.1);
+  }
+}
+
+.floating-ingredient {
+  position: absolute;
+  z-index: 2;
+  width: 76px;
+  height: 76px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.35);
+  transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.floating-ingredient span,
+.floating-ingredient::before,
+.floating-ingredient::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 35% 28%,
+      rgba(255, 255, 255, 0.75) 0 6%,
+      transparent 7%
+    ),
+    radial-gradient(circle at 45% 44%, var(--jam) 0 13%, transparent 14%),
+    radial-gradient(circle at 64% 43%, var(--jam) 0 13%, transparent 14%),
+    radial-gradient(circle at 54% 62%, var(--jam) 0 13%, transparent 14%);
+}
+
+.floating-ingredient span {
+  inset: 0;
+}
+.floating-ingredient::before {
+  inset: 10% 20% 26% 0;
+}
+.floating-ingredient::after {
+  inset: 25% 0 5% 22%;
+}
+
+.ingredient-one {
+  left: 5%;
+  top: 22%;
+}
+.ingredient-two {
+  right: 2%;
+  top: 35%;
+  width: 100px;
+  height: 100px;
+}
+.ingredient-three {
+  right: 13%;
+  bottom: 7%;
+  width: 58px;
+  height: 58px;
+}
+
+.is-open .floating-ingredient {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.is-open .ingredient-one {
+  transform: translate(-22px, -34px) rotate(-11deg);
+}
+.is-open .ingredient-two {
+  transform: translate(25px, -15px) rotate(8deg);
+}
+.is-open .ingredient-three {
+  transform: translate(12px, 22px) rotate(-8deg);
+}
+
+.flavour-callout {
+  position: absolute;
+  right: 2%;
+  top: 13%;
+  display: grid;
+  gap: 5px;
+  padding: 16px 18px;
+  border: 1px solid rgba(80, 42, 34, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 250, 244, 0.64);
+  backdrop-filter: blur(12px);
+}
+
+.flavour-callout span {
+  color: #8d746c;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.flavour-callout strong {
+  color: var(--ink);
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+}
+
+.macaron-flavour-selector {
+  position: absolute;
+  z-index: 7;
+  left: clamp(28px, 5vw, 82px);
+  right: clamp(28px, 5vw, 82px);
+  bottom: 28px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 10px;
+  border: 1px solid rgba(82, 48, 39, 0.1);
+  border-radius: 24px;
+  background: rgba(255, 250, 244, 0.74);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 45px rgba(83, 46, 38, 0.08);
+}
+
+.macaron-flavour-selector button {
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 17px;
+  color: #6f554d;
+  background: transparent;
+}
+
+.macaron-flavour-selector button:hover,
+.macaron-flavour-selector button.is-active {
+  transform: none;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.flavour-swatch {
+  position: relative;
+  width: 36px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--swatch-shell);
+  box-shadow:
+    inset 0 -6px 0 color-mix(in srgb, var(--swatch-shell), #000 12%),
+    0 5px 10px rgba(70, 35, 30, 0.12);
+}
+
+.flavour-swatch::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  top: 10px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--swatch-cream);
+}
+
+.premium-products-section {
+  padding-top: 72px;
+}
+
+.premium-section-header {
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.premium-section-header > div {
+  text-align: left;
+}
+
+.premium-product-image-wrap {
+  overflow: hidden;
+}
+
+.premium-product-card img {
+  transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.premium-product-card:hover img {
+  transform: scale(1.07);
+}
+
+@media (max-width: 1050px) {
+  .macaron-hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    padding-top: 70px;
+  }
+
+  .macaron-hero-copy {
+    max-width: 720px;
+    text-align: center;
+    justify-self: center;
+  }
+
+  .macaron-intro {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .macaron-hero-actions {
+    justify-content: center;
+  }
+
+  .macaron-stage {
+    min-height: 520px;
+  }
+
+  .macaron-object-button {
+    width: min(72vw, 520px);
+  }
+}
+
+@media (max-width: 720px) {
+  .navbar {
+    position: relative;
+    top: 0;
+    border-radius: 24px;
+  }
+
+  .macaron-hero {
+    padding: 60px 20px 150px;
+  }
+
+  .macaron-hero-copy h1 {
+    font-size: clamp(3.2rem, 15vw, 5.3rem);
+  }
+
+  .macaron-stage {
+    min-height: 390px;
+  }
+
+  .macaron-object-button {
+    width: min(94vw, 420px);
+  }
+
+  .macaron-flavour-selector {
+    left: 14px;
+    right: 14px;
+    bottom: 18px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .macaron-flavour-selector button {
+    min-height: 52px;
+  }
+
+  .flavour-callout,
+  .macaron-interaction-note {
+    display: none;
+  }
+
+  .floating-ingredient {
+    transform: scale(0.7);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .macaron-object-button,
+  .macaron-object,
+  .macaron-shell,
+  .macaron-cream,
+  .macaron-jam,
+  .macaron-stretch,
+  .floating-ingredient,
+  .premium-product-card img {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .macaron-crumb {
+    display: none;
+  }
+}
